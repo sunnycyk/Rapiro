@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Rapiro
+
+  Created by Sunny Cheung on 6/11/14.
+  Copyright (c) 2014 khl. All rights reserved.
+*/
+
+Give_Me_a_Hug = "Give Me a Hug";
+Wave_Right_Hand = "Wave Right Hand";
+Move_Both_Arms = "Move Both Arms";
+Wave_Left_Hand="Wave Left Hand";
+Catch_Action = "Catch Action";
+CONNECT = "Connect";
+DISCONNECT = "Disconnect";
+ERROR = "Error";
+DEVICE_NOT_FOUND="No BLE Device(s) found.";
+Language = "Language";
+Choose_Language = "Choose Language";
+

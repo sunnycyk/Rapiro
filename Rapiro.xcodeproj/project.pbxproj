@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32EAA791A09DDA2008DEECE /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EAA771A09DDA2008DEECE /* BLE.m */; };
 		A37F3A801A08D3A200389812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A7F1A08D3A200389812 /* AppDelegate.swift */; };
 		A37F3A821A08D3A200389812 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A811A08D3A200389812 /* ViewController.swift */; };
 		A37F3A851A08D3A200389812 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A831A08D3A200389812 /* Main.storyboard */; };
 		A37F3A871A08D3A200389812 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A861A08D3A200389812 /* Images.xcassets */; };
 		A37F3A8A1A08D3A200389812 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A881A08D3A200389812 /* LaunchScreen.xib */; };
 		A37F3A961A08D3A200389812 /* RapiroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A951A08D3A200389812 /* RapiroTests.swift */; };
+		A3B978D11A0B5CDA00A7F99B /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978CD1A0B5CDA00A7F99B /* down.png */; };
+		A3B978D21A0B5CDA00A7F99B /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978CE1A0B5CDA00A7F99B /* forward.png */; };
+		A3B978D31A0B5CDA00A7F99B /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978CF1A0B5CDA00A7F99B /* left.png */; };
+		A3B978D41A0B5CDA00A7F99B /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978D01A0B5CDA00A7F99B /* right.png */; };
+		A3B978D61A0B5F9E00A7F99B /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978D51A0B5F9E00A7F99B /* pause.png */; };
+		A3B978D81A0B608800A7F99B /* logo-small.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978D71A0B608800A7F99B /* logo-small.png */; };
+		A3B978DA1A0B61BB00A7F99B /* rapiro-big.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978D91A0B61BB00A7F99B /* rapiro-big.png */; };
+		A3B978DC1A0B630900A7F99B /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978DB1A0B630900A7F99B /* white.png */; };
+		A3B978DE1A0B661F00A7F99B /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978DD1A0B661F00A7F99B /* config.png */; };
+		A3B978E51A0B6BA700A7F99B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3B978E71A0B6BA700A7F99B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +37,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A32EAA761A09DDA2008DEECE /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
+		A32EAA771A09DDA2008DEECE /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
+		A32EAA781A09DDA2008DEECE /* BLEDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
 		A37F3A7A1A08D3A200389812 /* Rapiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rapiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F3A7E1A08D3A200389812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37F3A7F1A08D3A200389812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37F3A811A08D3A200389812 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A37F3A841A08D3A200389812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A37F3A861A08D3A200389812 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A37F3A891A08D3A200389812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A37F3A8F1A08D3A200389812 /* RapiroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RapiroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F3A941A08D3A200389812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37F3A951A08D3A200389812 /* RapiroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapiroTests.swift; sourceTree = "<group>"; };
+		A3B8ACDE1A08E21600F94566 /* BLE-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BLE-Bridging-Header.h"; sourceTree = "<group>"; };
+		A3B978CD1A0B5CDA00A7F99B /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		A3B978CE1A0B5CDA00A7F99B /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
+		A3B978CF1A0B5CDA00A7F99B /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		A3B978D01A0B5CDA00A7F99B /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		A3B978D51A0B5F9E00A7F99B /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		A3B978D71A0B608800A7F99B /* logo-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-small.png"; sourceTree = "<group>"; };
+		A3B978D91A0B61BB00A7F99B /* rapiro-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rapiro-big.png"; sourceTree = "<group>"; };
+		A3B978DB1A0B630900A7F99B /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
+		A3B978DD1A0B661F00A7F99B /* config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config.png; sourceTree = "<group>"; };
+		A3B978E61A0B6BA700A7F99B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3B978E81A0B6BA800A7F99B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A3B978E91A0B6BA900A7F99B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3B978ED1A0B6EEE00A7F99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A32EAA751A09DDA2008DEECE /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				A32EAA761A09DDA2008DEECE /* BLE.h */,
+				A32EAA771A09DDA2008DEECE /* BLE.m */,
+				A32EAA781A09DDA2008DEECE /* BLEDefines.h */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
 		A37F3A711A08D3A200389812 = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +114,16 @@
 		A37F3A7C1A08D3A200389812 /* Rapiro */ = {
 			isa = PBXGroup;
 			children = (
+				A3B978C81A0B5AF800A7F99B /* images */,
+				A32EAA751A09DDA2008DEECE /* BLE */,
 				A37F3A7F1A08D3A200389812 /* AppDelegate.swift */,
 				A37F3A811A08D3A200389812 /* ViewController.swift */,
 				A37F3A831A08D3A200389812 /* Main.storyboard */,
 				A37F3A861A08D3A200389812 /* Images.xcassets */,
 				A37F3A881A08D3A200389812 /* LaunchScreen.xib */,
 				A37F3A7D1A08D3A200389812 /* Supporting Files */,
+				A3B8ACDE1A08E21600F94566 /* BLE-Bridging-Header.h */,
+				A3B978E71A0B6BA700A7F99B /* Localizable.strings */,
 			);
 			path = Rapiro;
 			sourceTree = "<group>";
@@ -110,6 +151,22 @@
 				A37F3A941A08D3A200389812 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A3B978C81A0B5AF800A7F99B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A3B978DD1A0B661F00A7F99B /* config.png */,
+				A3B978DB1A0B630900A7F99B /* white.png */,
+				A3B978D91A0B61BB00A7F99B /* rapiro-big.png */,
+				A3B978D71A0B608800A7F99B /* logo-small.png */,
+				A3B978D51A0B5F9E00A7F99B /* pause.png */,
+				A3B978CD1A0B5CDA00A7F99B /* down.png */,
+				A3B978CE1A0B5CDA00A7F99B /* forward.png */,
+				A3B978CF1A0B5CDA00A7F99B /* left.png */,
+				A3B978D01A0B5CDA00A7F99B /* right.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +218,11 @@
 				TargetAttributes = {
 					A37F3A791A08D3A200389812 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					A37F3A8E1A08D3A200389812 = {
 						CreatedOnToolsVersion = 6.1;
@@ -175,6 +237,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
+				ja,
 			);
 			mainGroup = A37F3A711A08D3A200389812;
 			productRefGroup = A37F3A7B1A08D3A200389812 /* Products */;
@@ -193,7 +257,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37F3A851A08D3A200389812 /* Main.storyboard in Resources */,
+				A3B978DE1A0B661F00A7F99B /* config.png in Resources */,
+				A3B978DA1A0B61BB00A7F99B /* rapiro-big.png in Resources */,
+				A3B978D11A0B5CDA00A7F99B /* down.png in Resources */,
+				A3B978D61A0B5F9E00A7F99B /* pause.png in Resources */,
+				A3B978D41A0B5CDA00A7F99B /* right.png in Resources */,
+				A3B978D81A0B608800A7F99B /* logo-small.png in Resources */,
+				A3B978DC1A0B630900A7F99B /* white.png in Resources */,
+				A3B978D21A0B5CDA00A7F99B /* forward.png in Resources */,
+				A3B978E51A0B6BA700A7F99B /* Localizable.strings in Resources */,
 				A37F3A8A1A08D3A200389812 /* LaunchScreen.xib in Resources */,
+				A3B978D31A0B5CDA00A7F99B /* left.png in Resources */,
 				A37F3A871A08D3A200389812 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32EAA791A09DDA2008DEECE /* BLE.m in Sources */,
 				A37F3A821A08D3A200389812 /* ViewController.swift in Sources */,
 				A37F3A801A08D3A200389812 /* AppDelegate.swift in Sources */,
 			);
@@ -239,7 +314,7 @@
 		A37F3A831A08D3A200389812 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A37F3A841A08D3A200389812 /* Base */,
+				A3B978ED1A0B6EEE00A7F99B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -250,6 +325,16 @@
 				A37F3A891A08D3A200389812 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		A3B978E71A0B6BA700A7F99B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3B978E61A0B6BA700A7F99B /* en */,
+				A3B978E81A0B6BA800A7F99B /* zh-Hant */,
+				A3B978E91A0B6BA900A7F99B /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -293,6 +378,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Rapiro/BLE-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -329,6 +415,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Rapiro/BLE-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -407,6 +494,7 @@
 				A37F3A9B1A08D3A200389812 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A37F3A9C1A08D3A200389812 /* Build configuration list for PBXNativeTarget "RapiroTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +503,7 @@
 				A37F3A9E1A08D3A200389812 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
