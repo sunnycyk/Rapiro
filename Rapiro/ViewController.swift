@@ -33,7 +33,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     
-    func changeConnectBtnLang(bundle:NSBundle) {
+    func changeConnectBtnLang() {
         if (!connectStatus) {
             self.connectBLEButton.setTitle(NSLocalizedString("CONNECT", bundle: self.bundle, comment: "Connect"), forState: UIControlState.Normal)
         }
@@ -51,7 +51,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
         (self.view.viewWithTag(7) as UIButton).setTitle(NSLocalizedString("Move_Both_Arms", bundle: self.bundle, comment: "Move Both Hands"), forState: UIControlState.Normal)
         (self.view.viewWithTag(8) as UIButton).setTitle(NSLocalizedString("Wave_Left_Hand", bundle: self.bundle, comment: "Wave Left Hand"), forState: UIControlState.Normal)
         (self.view.viewWithTag(9) as UIButton).setTitle(NSLocalizedString("Catch_Action", bundle: self.bundle, comment: "Catch Action"), forState: UIControlState.Normal)
-        self.changeConnectBtnLang(bundle)
+        self.changeConnectBtnLang()
     }
     
     func disableAllButtons() {
