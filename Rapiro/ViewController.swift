@@ -17,6 +17,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     var connectStatus:Bool = false
     var lang:String = "en"
     var bundle:NSBundle!
+    var stopTimer:NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,43 +79,63 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     @IBAction func moveForward() {
+        stopTimer?.invalidate()
         self.sendBLEData("1")
     }
     
     @IBAction func moveBackward() {
+        stopTimer?.invalidate()
         self.sendBLEData("2")
 
     }
     
     @IBAction func turnLeft() {
+        stopTimer?.invalidate()
         self.sendBLEData("3")
     }
     
     @IBAction func turnRight() {
+        stopTimer?.invalidate()
         self.sendBLEData("4")
     }
     
     @IBAction func giveMeAHug() {
+        stopTimer?.invalidate()
         self.sendBLEData("5")
     }
     
     @IBAction func waveRightHand() {
-        self.sendBLEData("6")
+        stopTimer?.invalidate()
+        self.sendBLEData("8")
     }
     
     @IBAction func waveBothArms() {
+        stopTimer?.invalidate()
         self.sendBLEData("7")
     }
     
     @IBAction func waveLeftHand() {
-        self.sendBLEData("8")
+        stopTimer?.invalidate()
+        self.sendBLEData("6")
     }
     
     @IBAction func catchAction() {
+        stopTimer?.invalidate()
         self.sendBLEData("9")
     }
     
     @IBAction func stop() {
+        stopTimer?.invalidate()
+        stopTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("stopTimer:"), userInfo: nil, repeats: false)
+      
+    }
+    
+    @IBAction func readyPosition() {
+        stopTimer?.invalidate()
+        self.sendBLEData("0")
+    }
+    
+    func stopTimer(timer:NSTimer!) {
         self.sendBLEData("0")
     }
     
