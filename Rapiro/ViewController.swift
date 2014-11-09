@@ -80,48 +80,48 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     
     @IBAction func moveForward() {
         stopTimer?.invalidate()
-        self.sendBLEData("1")
+        self.sendBLEData("#M1")
     }
     
     @IBAction func moveBackward() {
         stopTimer?.invalidate()
-        self.sendBLEData("2")
+        self.sendBLEData("#M2")
 
     }
     
     @IBAction func turnLeft() {
         stopTimer?.invalidate()
-        self.sendBLEData("3")
+        self.sendBLEData("#M3")
     }
     
     @IBAction func turnRight() {
         stopTimer?.invalidate()
-        self.sendBLEData("4")
+        self.sendBLEData("#M4")
     }
     
     @IBAction func giveMeAHug() {
         stopTimer?.invalidate()
-        self.sendBLEData("5")
+        self.sendBLEData("#M5")
     }
     
     @IBAction func waveRightHand() {
         stopTimer?.invalidate()
-        self.sendBLEData("8")
+        self.sendBLEData("#M6")
     }
     
     @IBAction func waveBothArms() {
         stopTimer?.invalidate()
-        self.sendBLEData("7")
+        self.sendBLEData("#M7")
     }
     
     @IBAction func waveLeftHand() {
         stopTimer?.invalidate()
-        self.sendBLEData("6")
+        self.sendBLEData("#M8")
     }
     
     @IBAction func catchAction() {
         stopTimer?.invalidate()
-        self.sendBLEData("9")
+        self.sendBLEData("#M9")
     }
     
     @IBAction func stop() {
@@ -132,11 +132,11 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     
     @IBAction func readyPosition() {
         stopTimer?.invalidate()
-        self.sendBLEData("0")
+        self.sendBLEData("#M0")
     }
     
     func stopTimer(timer:NSTimer!) {
-        self.sendBLEData("0")
+        self.sendBLEData("#M0")
     }
     
     @IBAction func connectBLE() {
