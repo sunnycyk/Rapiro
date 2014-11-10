@@ -1,7 +1,7 @@
 Rapiro
 ======
 
-A Controller App to control [Rapiro](www.rapiro.com) with [RedBearLab BLE Nano](http://redbearlab.com/blenano/).  Please use https://github.com/sunnycyk/BLE_robot for RedBearLab BLE Nano Firmware for correct UUID setting and services.  
+A Controller App to control [Rapiro](http://www.rapiro.com) with [RedBearLab BLE Nano](http://redbearlab.com/blenano/).  Please use https://github.com/sunnycyk/BLE_robot for RedBearLab BLE Nano Firmware for correct UUID setting and services.  
 
 For more information about how to connect RedBearLab BLE Nano to Rapiro, please visit my tutorials.
 
