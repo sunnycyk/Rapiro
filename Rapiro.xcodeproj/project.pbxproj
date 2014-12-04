@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A32EAA791A09DDA2008DEECE /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EAA771A09DDA2008DEECE /* BLE.m */; };
+		A332A31D1A2EF8E0006278E1 /* PilotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A332A31C1A2EF8E0006278E1 /* PilotViewController.swift */; };
+		A332A31F1A2EFBD3006278E1 /* PilotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A332A31E1A2EFBD3006278E1 /* PilotCell.swift */; };
+		A332A3211A2EFF43006278E1 /* rbl.png in Resources */ = {isa = PBXBuildFile; fileRef = A332A3201A2EFF43006278E1 /* rbl.png */; };
+		A332A3241A2F16DA006278E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A332A3221A2F16DA006278E1 /* Main.storyboard */; };
 		A37F3A801A08D3A200389812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A7F1A08D3A200389812 /* AppDelegate.swift */; };
 		A37F3A821A08D3A200389812 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A811A08D3A200389812 /* ViewController.swift */; };
-		A37F3A851A08D3A200389812 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A831A08D3A200389812 /* Main.storyboard */; };
 		A37F3A871A08D3A200389812 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A861A08D3A200389812 /* Images.xcassets */; };
 		A37F3A8A1A08D3A200389812 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37F3A881A08D3A200389812 /* LaunchScreen.xib */; };
 		A37F3A961A08D3A200389812 /* RapiroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F3A951A08D3A200389812 /* RapiroTests.swift */; };
@@ -40,6 +43,10 @@
 		A32EAA761A09DDA2008DEECE /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
 		A32EAA771A09DDA2008DEECE /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
 		A32EAA781A09DDA2008DEECE /* BLEDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
+		A332A31C1A2EF8E0006278E1 /* PilotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotViewController.swift; sourceTree = "<group>"; };
+		A332A31E1A2EFBD3006278E1 /* PilotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotCell.swift; sourceTree = "<group>"; };
+		A332A3201A2EFF43006278E1 /* rbl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rbl.png; path = "../../../Google Drive/blenano/rbl.png"; sourceTree = "<group>"; };
+		A332A3231A2F16DA006278E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A37F3A7A1A08D3A200389812 /* Rapiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rapiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F3A7E1A08D3A200389812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37F3A7F1A08D3A200389812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +69,6 @@
 		A3B978E61A0B6BA700A7F99B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A3B978E81A0B6BA800A7F99B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A3B978E91A0B6BA900A7F99B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A3B978ED1A0B6EEE00A7F99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,16 +120,18 @@
 		A37F3A7C1A08D3A200389812 /* Rapiro */ = {
 			isa = PBXGroup;
 			children = (
+				A332A3221A2F16DA006278E1 /* Main.storyboard */,
 				A3B978C81A0B5AF800A7F99B /* images */,
 				A32EAA751A09DDA2008DEECE /* BLE */,
 				A37F3A7F1A08D3A200389812 /* AppDelegate.swift */,
 				A37F3A811A08D3A200389812 /* ViewController.swift */,
-				A37F3A831A08D3A200389812 /* Main.storyboard */,
 				A37F3A861A08D3A200389812 /* Images.xcassets */,
 				A37F3A881A08D3A200389812 /* LaunchScreen.xib */,
 				A37F3A7D1A08D3A200389812 /* Supporting Files */,
 				A3B8ACDE1A08E21600F94566 /* BLE-Bridging-Header.h */,
 				A3B978E71A0B6BA700A7F99B /* Localizable.strings */,
+				A332A31C1A2EF8E0006278E1 /* PilotViewController.swift */,
+				A332A31E1A2EFBD3006278E1 /* PilotCell.swift */,
 			);
 			path = Rapiro;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 		A3B978C81A0B5AF800A7F99B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A332A3201A2EFF43006278E1 /* rbl.png */,
 				A3B978DD1A0B661F00A7F99B /* config.png */,
 				A3B978DB1A0B630900A7F99B /* white.png */,
 				A3B978D91A0B61BB00A7F99B /* rapiro-big.png */,
@@ -256,13 +265,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A37F3A851A08D3A200389812 /* Main.storyboard in Resources */,
 				A3B978DE1A0B661F00A7F99B /* config.png in Resources */,
 				A3B978DA1A0B61BB00A7F99B /* rapiro-big.png in Resources */,
 				A3B978D11A0B5CDA00A7F99B /* down.png in Resources */,
+				A332A3211A2EFF43006278E1 /* rbl.png in Resources */,
 				A3B978D61A0B5F9E00A7F99B /* pause.png in Resources */,
 				A3B978D41A0B5CDA00A7F99B /* right.png in Resources */,
 				A3B978D81A0B608800A7F99B /* logo-small.png in Resources */,
+				A332A3241A2F16DA006278E1 /* Main.storyboard in Resources */,
 				A3B978DC1A0B630900A7F99B /* white.png in Resources */,
 				A3B978D21A0B5CDA00A7F99B /* forward.png in Resources */,
 				A3B978E51A0B6BA700A7F99B /* Localizable.strings in Resources */,
@@ -286,9 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A332A31F1A2EFBD3006278E1 /* PilotCell.swift in Sources */,
 				A32EAA791A09DDA2008DEECE /* BLE.m in Sources */,
 				A37F3A821A08D3A200389812 /* ViewController.swift in Sources */,
 				A37F3A801A08D3A200389812 /* AppDelegate.swift in Sources */,
+				A332A31D1A2EF8E0006278E1 /* PilotViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,10 +323,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A37F3A831A08D3A200389812 /* Main.storyboard */ = {
+		A332A3221A2F16DA006278E1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A3B978ED1A0B6EEE00A7F99B /* Base */,
+				A332A3231A2F16DA006278E1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

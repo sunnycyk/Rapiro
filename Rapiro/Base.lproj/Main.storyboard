@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +15,132 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgd-Bf-3ve">
+                                <rect key="frame" x="260" y="520" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="7sT-Vg-N91"/>
+                                    <constraint firstAttribute="height" constant="30" id="AiA-jo-2ha"/>
+                                </constraints>
+                                <state key="normal" title="Connect" backgroundImage="white.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectBLE" destination="BYZ-38-t0r" eventType="touchUpInside" id="vWl-WL-SY8"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yp0-V0-Vbv">
+                                <rect key="frame" x="290" y="525" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lgd-Bf-3ve" firstAttribute="top" secondItem="yp0-V0-Vbv" secondAttribute="bottom" constant="-25" id="2Ni-2S-0i8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lgd-Bf-3ve" secondAttribute="bottom" constant="50" id="P7l-yz-O2s"/>
+                            <constraint firstItem="Lgd-Bf-3ve" firstAttribute="leading" secondItem="yp0-V0-Vbv" secondAttribute="trailing" constant="-50" id="tOg-ZG-IBw"/>
+                            <constraint firstAttribute="centerX" secondItem="Lgd-Bf-3ve" secondAttribute="centerX" id="v0w-lS-f8H"/>
+                        </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="yp0-V0-Vbv" id="eal-H5-pe1"/>
+                        <outlet property="connectBLEButton" destination="Lgd-Bf-3ve" id="8S3-21-q4A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.75" y="198"/>
+            <point key="canvasLocation" x="369.75" y="126"/>
+        </scene>
+        <!--Pilot View Controller-->
+        <scene sceneID="6HE-U3-qSO">
+            <objects>
+                <viewController storyboardIdentifier="pilotViewController" id="47b-59-hpb" customClass="PilotViewController" customModule="Rapiro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bCf-EO-7mW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vew-30-fX2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Aq-93-1Pu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SW7-wc-s0K">
+                                <rect key="frame" x="0.0" y="44" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9CI-JA-imw">
+                                    <size key="itemSize" width="150" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PilotCell" id="TRI-OM-Tvf" customClass="PilotCell" customModule="Rapiro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rbl.png" translatesAutoresizingMaskIntoConstraints="NO" id="odm-zR-OKV">
+                                                    <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MI8-35-yLf">
+                                                    <rect key="frame" x="61" y="8" width="81" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RSSI" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tA-9D-GBV">
+                                                    <rect key="frame" x="61" y="31" width="81" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="odm-zR-OKV" id="esG-79-ca9"/>
+                                            <outlet property="pilotName" destination="MI8-35-yLf" id="cRc-Oe-A6l"/>
+                                            <outlet property="pilotRSSI" destination="0tA-9D-GBV" id="pnv-9p-PnQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="47b-59-hpb" id="cLv-qL-ATe"/>
+                                    <outlet property="delegate" destination="47b-59-hpb" id="ZlQ-J6-suW"/>
+                                </connections>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XZ-30-FbA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="barTintColor" red="0.14413218489999999" green="0.56813398810000004" blue="0.89940419819999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Select Your Rapiro" id="qVi-IM-Pxd">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="nBa-Hr-eHu">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="cancel" destination="47b-59-hpb" id="5Sa-gb-hZ3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="8XZ-30-FbA" secondAttribute="width" id="OQD-8A-8pq"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6J-Qg-Xvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1021" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rbl.png" width="80" height="95"/>
+        <image name="white.png" width="32" height="32"/>
+    </resources>
 </document>

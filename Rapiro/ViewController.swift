@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     
     var bleShield:BLE!
-    @IBOutlet var connectBLEButton:UIButton!
-    @IBOutlet var activityIndicator:UIActivityIndicatorView!
+    @IBOutlet weak var connectBLEButton:UIButton!
+    @IBOutlet weak var activityIndicator:UIActivityIndicatorView!
     @IBOutlet var controlButtons:Array<UIButton>!
     var connectStatus:Bool = false
     var lang:String = "en"
@@ -23,14 +23,13 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.bundle = NSBundle(path: NSBundle.mainBundle().pathForResource(self.lang, ofType: "lproj")!)
-        //self.changeLanguage("en")
        
 
         bleShield = BLE()
         bleShield.controlSetup()
         bleShield.delegate = self;
         
-        self.disableAllButtons()
+      //  self.disableAllButtons()
     }
     
     
@@ -186,18 +185,9 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     func connectionTimer(timer:NSTimer!) {
-        if (bleShield.peripherals?.count > 0) {
-            bleShield.connectPeripheral(bleShield.peripherals.objectAtIndex(0) as CBPeripheral)
-        }
-        else {
-            // Enable Connect button
-            var alert:UIAlertView = UIAlertView(title: NSLocalizedString("ERROR", bundle: self.bundle, comment: "Error"), message: NSLocalizedString("DEVICE_NOT_FOUND", bundle: self.bundle, comment: "Device not found"), delegate: nil, cancelButtonTitle: "OK")
-            self.activityIndicator.stopAnimating()
-            self.connectBLEButton.enabled = true
-            self.connectBLEButton.setTitle(NSLocalizedString("CONNECT", bundle: self.bundle, comment: "Connect"), forState: UIControlState.Normal)
-            alert.show()
-            
-        }
+        let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as PilotViewController
+        pilotVC.bleShield = self.bleShield
+        self.presentViewController(pilotVC, animated: true, completion: nil)
     }
     
     func bleDidReceiveData(data: UnsafeMutablePointer<UInt8>, length: Int32) {
@@ -207,6 +197,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     // UIAlertView Delegate
+
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch(buttonIndex) {
         case 0: self.changeLanguage("en")
