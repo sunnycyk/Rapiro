@@ -27,6 +27,7 @@
 		A3B978DC1A0B630900A7F99B /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978DB1A0B630900A7F99B /* white.png */; };
 		A3B978DE1A0B661F00A7F99B /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B978DD1A0B661F00A7F99B /* config.png */; };
 		A3B978E51A0B6BA700A7F99B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3B978E71A0B6BA700A7F99B /* Localizable.strings */; };
+		A3C026101A319DB900793907 /* RobotDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0260F1A319DB900793907 /* RobotDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A3B978E61A0B6BA700A7F99B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A3B978E81A0B6BA800A7F99B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A3B978E91A0B6BA900A7F99B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3C0260F1A319DB900793907 /* RobotDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				A3B978E71A0B6BA700A7F99B /* Localizable.strings */,
 				A332A31C1A2EF8E0006278E1 /* PilotViewController.swift */,
 				A332A31E1A2EFBD3006278E1 /* PilotCell.swift */,
+				A3C0260F1A319DB900793907 /* RobotDelegate.swift */,
 			);
 			path = Rapiro;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A332A31F1A2EFBD3006278E1 /* PilotCell.swift in Sources */,
+				A3C026101A319DB900793907 /* RobotDelegate.swift in Sources */,
 				A32EAA791A09DDA2008DEECE /* BLE.m in Sources */,
 				A37F3A821A08D3A200389812 /* ViewController.swift in Sources */,
 				A37F3A801A08D3A200389812 /* AppDelegate.swift in Sources */,

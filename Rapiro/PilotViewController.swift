@@ -13,12 +13,15 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var collectionView:UICollectionView!
     weak var bleShield:BLE!
+    var delegate:RobotDelegate!
     
     private let reuseIdentifier = "PilotCell"
     
     
     @IBAction func cancel() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {
+            self.delegate.cancelConnection()
+        })
     }
 
     override func viewDidLoad() {
@@ -33,6 +36,7 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // MARK - UICollectionViewDataSource 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // Always one
         return 1
     }
     
@@ -59,8 +63,9 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // MARK - UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.bleShield!.connectPeripheral(self.bleShield!.peripherals.objectAtIndex(indexPath.row) as CBPeripheral)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {
+            self.delegate.connectPeripheral(self.bleShield!.peripherals.objectAtIndex(indexPath.row) as CBPeripheral)
+        })
     }
     
     // MARK - UICollectionViewDelegateFlowLayout

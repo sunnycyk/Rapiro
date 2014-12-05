@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
+class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate, RobotDelegate {
     
     var bleShield:BLE!
     @IBOutlet weak var connectBLEButton:UIButton!
@@ -185,9 +185,15 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     func connectionTimer(timer:NSTimer!) {
-        let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as PilotViewController
-        pilotVC.bleShield = self.bleShield
-        self.presentViewController(pilotVC, animated: true, completion: nil)
+        if (bleShield.peripherals != nil) {
+            let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as PilotViewController
+            pilotVC.delegate = self
+            pilotVC.bleShield = self.bleShield
+            self.presentViewController(pilotVC, animated: true, completion: nil)
+        }
+        else {
+            self.cancelConnection()
+        }
     }
     
     func bleDidReceiveData(data: UnsafeMutablePointer<UInt8>, length: Int32) {
@@ -200,15 +206,23 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch(buttonIndex) {
-        case 0: self.changeLanguage("en")
-        case 1: self.changeLanguage("zh-Hant")
-        case 2: self.changeLanguage("ja")
-        default: self.changeLanguage("en")
+            case 0: self.changeLanguage("en")
+            case 1: self.changeLanguage("zh-Hant")
+            case 2: self.changeLanguage("ja")
+            default: self.changeLanguage("en")
         }
       
-        
     }
     
+    // MARK RobotDelegate
+    func cancelConnection() {
+       self.activityIndicator.stopAnimating()
+       self.connectBLEButton.enabled = true
+       self.connectBLEButton.setTitle(NSLocalizedString("CONNECT", bundle: self.bundle, comment: "Connect"), forState: UIControlState.Normal)
+    }
     
+    func connectPeripheral(robot: CBPeripheral) {
+        self.bleShield.connectPeripheral(robot)
+    }
 }
 
