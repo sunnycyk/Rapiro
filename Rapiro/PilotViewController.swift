@@ -12,9 +12,7 @@ import UIKit
 class PilotViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView:UICollectionView!
-    var bleShield:BLE!
-    
-    var pilots:[AnyObject]!
+    weak var bleShield:BLE!
     
     private let reuseIdentifier = "PilotCell"
     
@@ -39,6 +37,9 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (self.bleShield!.peripherals == nil) {
+            return 0
+        }
         return self.bleShield!.peripherals.count
     }
     

@@ -29,7 +29,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
         bleShield.controlSetup()
         bleShield.delegate = self;
         
-      //  self.disableAllButtons()
+        self.disableAllButtons()
     }
     
     
