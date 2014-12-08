@@ -17,4 +17,6 @@ ERROR = "Error";
 DEVICE_NOT_FOUND="No BLE Device(s) found.";
 Language = "Language";
 Choose_Language = "Choose Language";
+CONNECT_RAPIRO = "Select Your Rapiro";
+CANCEL="Cancel";
 

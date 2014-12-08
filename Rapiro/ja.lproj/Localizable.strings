@@ -17,3 +17,5 @@ ERROR = "エラー";
 DEVICE_NOT_FOUND="BLEデバイスを見つけることができません";
 Language = "言語";
 Choose_Language = "言語を選択する";
+CONNECT_RAPIRO = "Rapiroを選択してください";
+CANCEL = "キャンセル";

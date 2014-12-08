@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate, RobotDelegate {
+class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     
     var bleShield:BLE!
     @IBOutlet weak var connectBLEButton:UIButton!
@@ -139,30 +139,53 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate, RobotD
     }
     
     @IBAction func connectBLE() {
-        if (bleShield.activePeripheral != nil) {
-            if (bleShield.activePeripheral.state == CBPeripheralState.Connected) {
-                bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
-                return
+        if (!self.connectStatus) {
+            if (bleShield.activePeripheral != nil) {
+                if (bleShield.activePeripheral.state == CBPeripheralState.Connected) {
+                    bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
+                    return
+                }
+                
             }
             
+            if (bleShield.peripherals != nil) {
+                bleShield.peripherals = nil
+            }
+            
+            bleShield.findBLEPeripherals(3)
+            
+            NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("connectionTimer:"), userInfo: nil, repeats: false)
+            
+            self.connectBLEButton.enabled = false
+            self.activityIndicator.startAnimating()
+            self.connectBLEButton.setTitle("", forState: UIControlState.Normal)
         }
-        
-        if (bleShield.peripherals != nil) {
-            bleShield.peripherals = nil
+        else {
+            bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
         }
-        
-        bleShield.findBLEPeripherals(3)
-        
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("connectionTimer:"), userInfo: nil, repeats: false)
-        
-        self.connectBLEButton.enabled = false
-        self.activityIndicator.startAnimating()
-        self.connectBLEButton.setTitle("", forState: UIControlState.Normal)
     }
     
     @IBAction func config() {
-        var message:UIAlertView = UIAlertView(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message: NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), delegate: self, cancelButtonTitle: nil, otherButtonTitles: "English", "中文", "日本語")
-        message.show()
+        let  alertController = UIAlertController(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message:NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), preferredStyle: .ActionSheet)
+        
+        let englishAction = UIAlertAction(title:"English", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("en")
+            
+        }
+        let chineseAction = UIAlertAction(title:"中文", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("zh-Hant")
+        }
+        let japaneseAction = UIAlertAction(title:"日本語", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("ja")
+        }
+        alertController.addAction(englishAction)
+        alertController.addAction(chineseAction)
+        alertController.addAction(japaneseAction)
+  
+        self.presentViewController(alertController, animated: true) {}
     }
     
     // BLE Delegate
@@ -189,10 +212,17 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate, RobotD
             let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as PilotViewController
             pilotVC.delegate = self
             pilotVC.bleShield = self.bleShield
+            pilotVC.bundle = self.bundle
             self.presentViewController(pilotVC, animated: true, completion: nil)
         }
         else {
-            self.cancelConnection()
+            let alertController = UIAlertController(title: NSLocalizedString("ERROR", bundle: self.bundle, comment: "Error"), message: NSLocalizedString("DEVICE_NOT_FOUND", bundle: self.bundle, comment: "Device Not found"), preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                  self.cancelConnection()
+            }
+            alertController.addAction(OKAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
@@ -204,15 +234,7 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate, RobotD
     
     // UIAlertView Delegate
 
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        switch(buttonIndex) {
-            case 0: self.changeLanguage("en")
-            case 1: self.changeLanguage("zh-Hant")
-            case 2: self.changeLanguage("ja")
-            default: self.changeLanguage("en")
-        }
-      
-    }
+   
     
     // MARK RobotDelegate
     func cancelConnection() {

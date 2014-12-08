@@ -12,8 +12,10 @@ import UIKit
 class PilotViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView:UICollectionView!
+    @IBOutlet weak var cancelButton:UIBarButtonItem!
     weak var bleShield:BLE!
     var delegate:RobotDelegate!
+    weak var bundle:NSBundle!
     
     private let reuseIdentifier = "PilotCell"
     
@@ -27,6 +29,9 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        (self.view.viewWithTag(1) as UINavigationBar).topItem?.title = NSLocalizedString("CONNECT_RAPIRO", bundle: self.bundle, comment: "Connect Your Rapiro")
+        cancelButton.title =   NSLocalizedString("CANCEL", bundle: self.bundle, comment: "Cancel")
+        
     }
 
     override func didReceiveMemoryWarning() {
