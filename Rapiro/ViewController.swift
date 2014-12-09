@@ -18,12 +18,31 @@ class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     var lang:String = "en"
     var bundle:NSBundle!
     var stopTimer:NSTimer!
+    var alertController:UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.bundle = NSBundle(path: NSBundle.mainBundle().pathForResource(self.lang, ofType: "lproj")!)
        
+        self.alertController = UIAlertController(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message:NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), preferredStyle: .ActionSheet)
+        
+        let englishAction = UIAlertAction(title:"English", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("en")
+            
+        }
+        let chineseAction = UIAlertAction(title:"中文", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("zh-Hant")
+        }
+        let japaneseAction = UIAlertAction(title:"日本語", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("ja")
+        }
+        self.alertController.addAction(englishAction)
+        self.alertController.addAction(chineseAction)
+        self.alertController.addAction(japaneseAction)
 
         bleShield = BLE()
         bleShield.controlSetup()
@@ -166,25 +185,7 @@ class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     }
     
     @IBAction func config() {
-        let  alertController = UIAlertController(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message:NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), preferredStyle: .ActionSheet)
         
-        let englishAction = UIAlertAction(title:"English", style: .Default) { (action) in
-            println(action)
-            self.changeLanguage("en")
-            
-        }
-        let chineseAction = UIAlertAction(title:"中文", style: .Default) { (action) in
-            println(action)
-            self.changeLanguage("zh-Hant")
-        }
-        let japaneseAction = UIAlertAction(title:"日本語", style: .Default) { (action) in
-            println(action)
-            self.changeLanguage("ja")
-        }
-        alertController.addAction(englishAction)
-        alertController.addAction(chineseAction)
-        alertController.addAction(japaneseAction)
-  
         self.presentViewController(alertController, animated: true) {}
     }
     
