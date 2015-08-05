@@ -29,7 +29,7 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        (self.view.viewWithTag(1) as UINavigationBar).topItem?.title = NSLocalizedString("CONNECT_RAPIRO", bundle: self.bundle, comment: "Connect Your Rapiro")
+        (self.view.viewWithTag(1) as! UINavigationBar).topItem?.title = NSLocalizedString("CONNECT_RAPIRO", bundle: self.bundle, comment: "Connect Your Rapiro")
         cancelButton.title =   NSLocalizedString("CANCEL", bundle: self.bundle, comment: "Cancel")
         
     }
@@ -53,15 +53,15 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as!
             PilotCell
         
-        let periphearls:CBPeripheral = self.bleShield!.peripherals.objectAtIndex(indexPath.row) as CBPeripheral
-        let rssi:NSNumber = self.bleShield!.peripheralsRssi.objectAtIndex(indexPath.row) as NSNumber
+        let periphearls:CBPeripheral = self.bleShield!.peripherals.objectAtIndex(indexPath.row) as! CBPeripheral
+        let rssi:NSNumber = self.bleShield!.peripheralsRssi.objectAtIndex(indexPath.row) as! NSNumber
         
 
         cell.pilotName.text = periphearls.name
-        cell.pilotRSSI.text = NSString(format: "rssi: %d", rssi.intValue)
+        cell.pilotRSSI.text = String(format: "rssi: %d", rssi.intValue)
         return cell
     }
     
@@ -69,7 +69,7 @@ class PilotViewController: UIViewController, UICollectionViewDataSource, UIColle
     // MARK - UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.dismissViewControllerAnimated(true, completion: {
-            self.delegate.connectPeripheral(self.bleShield!.peripherals.objectAtIndex(indexPath.row) as CBPeripheral)
+            self.delegate.connectPeripheral(self.bleShield!.peripherals.objectAtIndex(indexPath.row) as! CBPeripheral)
         })
     }
     

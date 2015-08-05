@@ -64,12 +64,12 @@ class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     func changeLanguage(lang:String) {
         self.lang = lang
         self.bundle = NSBundle(path: NSBundle.mainBundle().pathForResource(self.lang, ofType: "lproj")!)
-        (self.view.viewWithTag(5) as UIButton).setTitle(NSLocalizedString("Give_Me_a_Hug", bundle: self.bundle, comment: "Give me a Hug"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(5) as! UIButton).setTitle(NSLocalizedString("Give_Me_a_Hug", bundle: self.bundle, comment: "Give me a Hug"), forState: UIControlState.Normal)
        
-        (self.view.viewWithTag(6) as UIButton).setTitle(NSLocalizedString("Wave_Right_Hand", bundle: self.bundle, comment: "Wave Right Hand"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(7) as UIButton).setTitle(NSLocalizedString("Move_Both_Arms", bundle: self.bundle, comment: "Move Both Hands"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(8) as UIButton).setTitle(NSLocalizedString("Wave_Left_Hand", bundle: self.bundle, comment: "Wave Left Hand"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(9) as UIButton).setTitle(NSLocalizedString("Catch_Action", bundle: self.bundle, comment: "Catch Action"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(6) as! UIButton).setTitle(NSLocalizedString("Wave_Right_Hand", bundle: self.bundle, comment: "Wave Right Hand"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(7) as! UIButton).setTitle(NSLocalizedString("Move_Both_Arms", bundle: self.bundle, comment: "Move Both Hands"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(8) as! UIButton).setTitle(NSLocalizedString("Wave_Left_Hand", bundle: self.bundle, comment: "Wave Left Hand"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(9) as! UIButton).setTitle(NSLocalizedString("Catch_Action", bundle: self.bundle, comment: "Catch Action"), forState: UIControlState.Normal)
         self.changeConnectBtnLang()
     }
     
@@ -210,7 +210,7 @@ class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     
     func connectionTimer(timer:NSTimer!) {
         if (bleShield.peripherals != nil) {
-            let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as PilotViewController
+            let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as! PilotViewController
             pilotVC.delegate = self
             pilotVC.bleShield = self.bleShield
             pilotVC.bundle = self.bundle
@@ -230,7 +230,7 @@ class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     func bleDidReceiveData(data: UnsafeMutablePointer<UInt8>, length: Int32) {
         var s:NSString! = NSString(bytes: data, length: Int(length), encoding: NSUTF8StringEncoding)
         data.destroy()
-        NSLog(s!)
+        NSLog(s as! String)
     }
     
     // UIAlertView Delegate
