@@ -8,23 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
+class ViewController: UIViewController, BLEDelegate, RobotDelegate {
     
     var bleShield:BLE!
-    @IBOutlet var connectBLEButton:UIButton!
-    @IBOutlet var activityIndicator:UIActivityIndicatorView!
+    @IBOutlet weak var connectBLEButton:UIButton!
+    @IBOutlet weak var activityIndicator:UIActivityIndicatorView!
     @IBOutlet var controlButtons:Array<UIButton>!
     var connectStatus:Bool = false
     var lang:String = "en"
     var bundle:NSBundle!
     var stopTimer:NSTimer!
+    var alertController:UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.bundle = NSBundle(path: NSBundle.mainBundle().pathForResource(self.lang, ofType: "lproj")!)
-        //self.changeLanguage("en")
        
+        self.alertController = UIAlertController(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message:NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), preferredStyle: .ActionSheet)
+        
+        let englishAction = UIAlertAction(title:"English", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("en")
+            
+        }
+        let chineseAction = UIAlertAction(title:"中文", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("zh-Hant")
+        }
+        let japaneseAction = UIAlertAction(title:"日本語", style: .Default) { (action) in
+            println(action)
+            self.changeLanguage("ja")
+        }
+        self.alertController.addAction(englishAction)
+        self.alertController.addAction(chineseAction)
+        self.alertController.addAction(japaneseAction)
 
         bleShield = BLE()
         bleShield.controlSetup()
@@ -46,12 +64,12 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     func changeLanguage(lang:String) {
         self.lang = lang
         self.bundle = NSBundle(path: NSBundle.mainBundle().pathForResource(self.lang, ofType: "lproj")!)
-        (self.view.viewWithTag(5) as UIButton).setTitle(NSLocalizedString("Give_Me_a_Hug", bundle: self.bundle, comment: "Give me a Hug"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(5) as! UIButton).setTitle(NSLocalizedString("Give_Me_a_Hug", bundle: self.bundle, comment: "Give me a Hug"), forState: UIControlState.Normal)
        
-        (self.view.viewWithTag(6) as UIButton).setTitle(NSLocalizedString("Wave_Right_Hand", bundle: self.bundle, comment: "Wave Right Hand"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(7) as UIButton).setTitle(NSLocalizedString("Move_Both_Arms", bundle: self.bundle, comment: "Move Both Hands"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(8) as UIButton).setTitle(NSLocalizedString("Wave_Left_Hand", bundle: self.bundle, comment: "Wave Left Hand"), forState: UIControlState.Normal)
-        (self.view.viewWithTag(9) as UIButton).setTitle(NSLocalizedString("Catch_Action", bundle: self.bundle, comment: "Catch Action"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(6) as! UIButton).setTitle(NSLocalizedString("Wave_Right_Hand", bundle: self.bundle, comment: "Wave Right Hand"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(7) as! UIButton).setTitle(NSLocalizedString("Move_Both_Arms", bundle: self.bundle, comment: "Move Both Hands"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(8) as! UIButton).setTitle(NSLocalizedString("Wave_Left_Hand", bundle: self.bundle, comment: "Wave Left Hand"), forState: UIControlState.Normal)
+        (self.view.viewWithTag(9) as! UIButton).setTitle(NSLocalizedString("Catch_Action", bundle: self.bundle, comment: "Catch Action"), forState: UIControlState.Normal)
         self.changeConnectBtnLang()
     }
     
@@ -140,30 +158,35 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     @IBAction func connectBLE() {
-        if (bleShield.activePeripheral != nil) {
-            if (bleShield.activePeripheral.state == CBPeripheralState.Connected) {
-                bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
-                return
+        if (!self.connectStatus) {
+            if (bleShield.activePeripheral != nil) {
+                if (bleShield.activePeripheral.state == CBPeripheralState.Connected) {
+                    bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
+                    return
+                }
+                
             }
             
+            if (bleShield.peripherals != nil) {
+                bleShield.peripherals = nil
+            }
+            
+            bleShield.findBLEPeripherals(3)
+            
+            NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("connectionTimer:"), userInfo: nil, repeats: false)
+            
+            self.connectBLEButton.enabled = false
+            self.activityIndicator.startAnimating()
+            self.connectBLEButton.setTitle("", forState: UIControlState.Normal)
         }
-        
-        if (bleShield.peripherals != nil) {
-            bleShield.peripherals = nil
+        else {
+            bleShield.CM.cancelPeripheralConnection(bleShield.activePeripheral)
         }
-        
-        bleShield.findBLEPeripherals(3)
-        
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("connectionTimer:"), userInfo: nil, repeats: false)
-        
-        self.connectBLEButton.enabled = false
-        self.activityIndicator.startAnimating()
-        self.connectBLEButton.setTitle("", forState: UIControlState.Normal)
     }
     
     @IBAction func config() {
-        var message:UIAlertView = UIAlertView(title: NSLocalizedString("Language", bundle: self.bundle, comment: "Language"), message: NSLocalizedString("Choose_Language", bundle: self.bundle, comment: "Choose Language"), delegate: self, cancelButtonTitle: nil, otherButtonTitles: "English", "中文", "日本語")
-        message.show()
+        
+        self.presentViewController(alertController, animated: true) {}
     }
     
     // BLE Delegate
@@ -186,38 +209,43 @@ class ViewController: UIViewController, BLEDelegate, UIAlertViewDelegate {
     }
     
     func connectionTimer(timer:NSTimer!) {
-        if (bleShield.peripherals?.count > 0) {
-            bleShield.connectPeripheral(bleShield.peripherals.objectAtIndex(0) as CBPeripheral)
+        if (bleShield.peripherals != nil) {
+            let pilotVC:PilotViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pilotViewController") as! PilotViewController
+            pilotVC.delegate = self
+            pilotVC.bleShield = self.bleShield
+            pilotVC.bundle = self.bundle
+            self.presentViewController(pilotVC, animated: true, completion: nil)
         }
         else {
-            // Enable Connect button
-            var alert:UIAlertView = UIAlertView(title: NSLocalizedString("ERROR", bundle: self.bundle, comment: "Error"), message: NSLocalizedString("DEVICE_NOT_FOUND", bundle: self.bundle, comment: "Device not found"), delegate: nil, cancelButtonTitle: "OK")
-            self.activityIndicator.stopAnimating()
-            self.connectBLEButton.enabled = true
-            self.connectBLEButton.setTitle(NSLocalizedString("CONNECT", bundle: self.bundle, comment: "Connect"), forState: UIControlState.Normal)
-            alert.show()
+            let alertController = UIAlertController(title: NSLocalizedString("ERROR", bundle: self.bundle, comment: "Error"), message: NSLocalizedString("DEVICE_NOT_FOUND", bundle: self.bundle, comment: "Device Not found"), preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                  self.cancelConnection()
+            }
+            alertController.addAction(OKAction)
             
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
     func bleDidReceiveData(data: UnsafeMutablePointer<UInt8>, length: Int32) {
         var s:NSString! = NSString(bytes: data, length: Int(length), encoding: NSUTF8StringEncoding)
         data.destroy()
-        NSLog(s!)
+        NSLog(s as! String)
     }
     
     // UIAlertView Delegate
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        switch(buttonIndex) {
-        case 0: self.changeLanguage("en")
-        case 1: self.changeLanguage("zh-Hant")
-        case 2: self.changeLanguage("ja")
-        default: self.changeLanguage("en")
-        }
-      
-        
+
+   
+    
+    // MARK RobotDelegate
+    func cancelConnection() {
+       self.activityIndicator.stopAnimating()
+       self.connectBLEButton.enabled = true
+       self.connectBLEButton.setTitle(NSLocalizedString("CONNECT", bundle: self.bundle, comment: "Connect"), forState: UIControlState.Normal)
     }
     
-    
+    func connectPeripheral(robot: CBPeripheral) {
+        self.bleShield.connectPeripheral(robot)
+    }
 }
 

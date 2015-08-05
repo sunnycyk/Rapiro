@@ -17,3 +17,5 @@ ERROR = "錯誤";
 DEVICE_NOT_FOUND="找不到BLE設備";
 Language = "語言";
 Choose_Language = "選擇語言";
+CONNECT_RAPIRO = "請選擇你的Rapiro";
+CANCEL = "取消";
